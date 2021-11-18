@@ -1,9 +1,6 @@
 package com.example.accessingdatarest;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -12,17 +9,26 @@ public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
+    @Column
     private String firstName;
+    @Column
     private String lastName;
+    @Column
     private String address;
+    @Column
     private String email;
+    @Column
     private int phone;
-    private LocalDate startOfMembership;
-    private LocalDate durationOfMembership;
+    //private LocalDate startOfMembership;
+    @Column
+    private int durationOfMembership;
+    @Column
     private String membershipType;
+    @Column
     private int currentNumTournaments;
+    @Column
     private int pastNumTournaments;
+    @Column
     private int futureNumTournaments;
 
     public String getAddress() {
@@ -49,19 +55,19 @@ public class Member {
         this.phone = phone;
     }
 
-    public LocalDate getStartOfMembership() {
-        return startOfMembership;
-    }
+    //public LocalDate getStartOfMembership() {
+    //    return startOfMembership;
+   // }
 
-    public void setStartOfMembership(LocalDate startOfMembership) {
-        this.startOfMembership = startOfMembership;
-    }
+    //public void setStartOfMembership(LocalDate startOfMembership) {
+    //    this.startOfMembership = startOfMembership;
+    //}
 
-    public LocalDate getDurationOfMembership() {
+    public int getDurationOfMembership() {
         return durationOfMembership;
     }
 
-    public void setDurationOfMembership(LocalDate durationOfMembership) {
+    public void setDurationOfMembership(int durationOfMembership) {
         this.durationOfMembership = durationOfMembership;
     }
 
