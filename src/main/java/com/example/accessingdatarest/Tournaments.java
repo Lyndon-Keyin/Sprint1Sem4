@@ -7,12 +7,11 @@ import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Entity
-public class Tournaments {
+public class Tournaments extends Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
     private LocalDate startDate;
     private LocalDate endDate;
     private String location;
@@ -20,6 +19,7 @@ public class Tournaments {
     private int cashPrize;
     private String participatingMemebers;
     private String finalStandings;
+
 
     public LocalDate getStartDate() {
         return startDate;
