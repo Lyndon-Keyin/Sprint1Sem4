@@ -1,27 +1,17 @@
 package com.example.restservice;
 
-import java.util.concurrent.atomic.AtomicLong;
-
-import com.example.accessingdatarest.Member;
-import com.example.accessingdatarest.MemberRepository;
+//import com.example.accessingdatarest.Member;
+//import com.example.accessingdatarest.MemberRepository;
+import com.example.accessingdatarest.Tournaments;
+import com.example.accessingdatarest.TournamentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class GreetingController {
 
-//    private static final String template = "Hello, %s!";
-//    private final AtomicLong counter = new AtomicLong();
-
-//    @GetMapping("/greeting")
-//    public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-//        return new Greeting(counter.incrementAndGet(), String.format(template, name));
-//    }
-
     @Autowired
-    private MemberRepository memberRepository;
+    private TournamentsRepository tournamentsRepository;
 
     @GetMapping("/welcome")
     public String getPage() {
@@ -29,19 +19,29 @@ public class GreetingController {
     }
 
     @GetMapping(value = "/members")
-    public Iterable<Member> getMembers(){
-        return memberRepository.findAll();
+    public Iterable<Tournaments> getMembers(){
+        return tournamentsRepository.findAll();
     }
 
     @PostMapping(value = "/save")
-    public String saveMember (@RequestBody Member member){
-        memberRepository.save(member);
+    public String saveMember (@RequestBody Tournaments tournaments){
+        tournamentsRepository.save(tournaments);
         return "Saved";
     }
 
     @PutMapping(value = "update/{id}")
-    public String updateMember(@PathVariable long id, @RequestBody Member member){
-        Member updatedMember = MemberRepository.findById(id).get();
-        return null;
+    public String updateMember(@PathVariable long id, @RequestBody Tournaments tournaments){
+        Tournaments updatedTournaments = tournamentsRepository.findById(id).get();
+        updatedTournaments.setLastName(tournaments.getLastName());
+        updatedTournaments.setPhone(tournaments.getPhone());
+        tournamentsRepository.save(updatedTournaments);
+        return "updated...";
+    }
+
+    @DeleteMapping(value="/delete/{id}")
+    public String deleteMember(@PathVariable long id){
+        Tournaments deleteMember = tournamentsRepository.findById(id).get();
+        tournamentsRepository.delete(deleteMember);
+        return "Deleted user with the id: "+id;
     }
 }
