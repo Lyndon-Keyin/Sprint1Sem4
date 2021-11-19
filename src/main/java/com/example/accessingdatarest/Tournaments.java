@@ -1,9 +1,6 @@
 package com.example.accessingdatarest;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -12,12 +9,19 @@ public class Tournaments extends Member {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column
     private LocalDate startDate;
+    @Column
     private LocalDate endDate;
+    @Column
     private String location;
+    @Column
     private int entryFee;
+    @Column
     private int cashPrize;
-    private String participatingMemebers;
+    @Column
+    private String participatingMembers;
+    @Column
     private String finalStandings;
 
 
@@ -62,11 +66,11 @@ public class Tournaments extends Member {
     }
 
     public String getParticipatingMemebers() {
-        return participatingMemebers;
+        return participatingMembers;
     }
 
     public void setParticipatingMemebers(String participatingMemebers) {
-        this.participatingMemebers = participatingMemebers;
+        this.participatingMembers = participatingMemebers;
     }
 
     public String getFinalStandings() {
