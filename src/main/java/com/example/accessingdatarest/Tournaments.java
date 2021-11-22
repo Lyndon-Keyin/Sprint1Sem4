@@ -1,5 +1,8 @@
 package com.example.accessingdatarest;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -9,13 +12,16 @@ public class Tournaments extends Member {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column
+    @Column(name = "start_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDate startDate;
     @Column
+    @JsonFormat (pattern = "YYYY-MM-DD")
     private LocalDate endDate;
     @Column
     private String location;
-    @Column
+    @Column(name = "entry_fee")
     private int entryFee;
     @Column
     private int cashPrize;
