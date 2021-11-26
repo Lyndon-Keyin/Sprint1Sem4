@@ -1,5 +1,12 @@
 package com.example.accessingdatarest;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -19,17 +26,31 @@ public class Member {
     private String email;
     @Column
     private int phone;
-    //private LocalDate startOfMembership;
+    @Column
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    private LocalDate startOfMembership;
     @Column
     private int durationOfMembership;
-    @Column
-    private String membershipType;
     @Column
     private int currentNumTournaments;
     @Column
     private int pastNumTournaments;
     @Column
     private int futureNumTournaments;
+    @OneToOne
+    @JoinColumn(name="membershipType")
+    private MembershipType membershipType;
+
+    public MembershipType getMembershipType() {
+        return membershipType;
+    }
+
+    public void setMembershipType(MembershipType membershipType) {
+        this.membershipType = membershipType;
+    }
 
     public String getAddress() {
         return address;
@@ -55,28 +76,12 @@ public class Member {
         this.phone = phone;
     }
 
-    //public LocalDate getStartOfMembership() {
-    //    return startOfMembership;
-   // }
-
-    //public void setStartOfMembership(LocalDate startOfMembership) {
-    //    this.startOfMembership = startOfMembership;
-    //}
-
-    public int getDurationOfMembership() {
-        return durationOfMembership;
+    public LocalDate getStartOfMembership() {
+        return startOfMembership;
     }
 
-    public void setDurationOfMembership(int durationOfMembership) {
-        this.durationOfMembership = durationOfMembership;
-    }
-
-    public String getMembershipType() {
-        return membershipType;
-    }
-
-    public void setMembershipType(String membershipType) {
-        this.membershipType = membershipType;
+    public void setStartOfMembership(LocalDate startOfMembership) {
+        this.startOfMembership = startOfMembership;
     }
 
     public int getCurrentNumTournaments() {
@@ -86,7 +91,13 @@ public class Member {
     public void setCurrentNumTournaments(int currentNumTournaments) {
         this.currentNumTournaments = currentNumTournaments;
     }
+    public int getDurationOfMembership() {
+        return durationOfMembership;
+    }
 
+    public void setDurationOfMembership(int durationOfMembership) {
+        this.durationOfMembership = durationOfMembership;
+    }
     public int getPastNumTournaments() {
         return pastNumTournaments;
     }
