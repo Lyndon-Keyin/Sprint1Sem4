@@ -1,27 +1,37 @@
 package com.example.accessingdatarest;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
+
 @Entity
-public class Tournaments extends Member {
+public class Tournaments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(name = "start_date")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
+
+    @Column
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate startDate;
     @Column
-    @JsonFormat (pattern = "YYYY-MM-DD")
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate endDate;
     @Column
     private String location;
-    @Column(name = "entry_fee")
+    @Column
     private int entryFee;
     @Column
     private int cashPrize;
@@ -31,10 +41,10 @@ public class Tournaments extends Member {
     private String finalStandings;
 
 
+
     public LocalDate getStartDate() {
         return startDate;
     }
-
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
@@ -71,12 +81,12 @@ public class Tournaments extends Member {
         this.cashPrize = cashPrize;
     }
 
-    public String getParticipatingMemebers() {
+    public String getParticipatingMembers() {
         return participatingMembers;
     }
 
-    public void setParticipatingMemebers(String participatingMemebers) {
-        this.participatingMembers = participatingMemebers;
+    public void setParticipatingMembers(String participatingMembers) {
+        this.participatingMembers = participatingMembers;
     }
 
     public String getFinalStandings() {
