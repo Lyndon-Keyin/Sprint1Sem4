@@ -1,7 +1,7 @@
 package com.example;
 
 import com.example.accessingdatarest.Member;
-//import com.example.accessingdatarest.MemberRepository;
+//import com.example.Repositories.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
