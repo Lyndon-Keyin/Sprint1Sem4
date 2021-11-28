@@ -13,8 +13,8 @@ import java.util.List;
 public interface MemberRepository extends PagingAndSortingRepository<Member, Long> {
 
     List<Member> findByLastName(@Param("lastname") String lastname);
-//    List<Member> findAllByCurrentNumTournaments(@Param("all")String all);
-//    List<Member> findById(@Param("id") String id);
+    List<Member> findAllByCurrentNumTournaments(@Param("all")String all);
+    List<Member> findById(@Param("id") String id);
     List<Member> findByPhone(@Param("phone") int phone);
     List<Member> findByCurrentNumTournaments(@Param("currentNumTournaments") int currentNumTournaments);
     List<Member> findByPastNumTournaments(@Param("pastNumTournaments") int pastNumTournaments);

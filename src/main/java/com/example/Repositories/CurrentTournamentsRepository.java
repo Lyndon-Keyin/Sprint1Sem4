@@ -14,7 +14,7 @@ public interface CurrentTournamentsRepository extends PagingAndSortingRepository
 
 
       List<CurrentTournaments> findByParticipatingMembers(@Param("participatingMembers") String participatingMembers);
-//      List<CurrentTournaments> findById(@Param("id") String id);
+      List<CurrentTournaments> findById(@Param("id") String id);
 //      List<CurrentTournaments> findByCashPrize (@Param("cashPrize") String cashPrize);
 //      List<CurrentTournaments> findByEndDate (@Param("endDate") LocalDate endDate);
 //      List<CurrentTournaments> findByStartDate (@Param("startDate") LocalDate startDate);
