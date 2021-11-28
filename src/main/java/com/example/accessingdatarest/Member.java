@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Member {
@@ -34,15 +35,54 @@ public class Member {
     private LocalDate startOfMembership;
     @Column
     private int durationOfMembership;
-    @Column
-    private int currentNumTournaments;
-    @Column
-    private int pastNumTournaments;
-    @Column
-    private int futureNumTournaments;
+
+
+    @ManyToOne
+    @JoinColumn(name="currentTournament")
+    private CurrentTournaments currentNumTournaments;
+
+    @ManyToOne
+    @JoinColumn(name="pastTournament")
+    private PastTournaments pastNumTournaments;
+
+    @ManyToOne
+    @JoinColumn(name="futureTournament")
+    private FutureTournaments futureNumTournaments;
+
+
     @OneToOne
     @JoinColumn(name="membershipType")
     private MembershipType membershipType;
+
+   public Member(){
+
+   }
+
+    public Member(
+            String firstName,
+            String lastName,
+            String address,
+            String email,
+            int phone,
+            int durationOfMembership,
+            LocalDate startOfMembership,
+            CurrentTournaments currentNumTournaments,
+            PastTournaments pastNumTournaments,
+            FutureTournaments futureNumTournaments,
+            MembershipType membershipType )
+    {
+        this.firstName=firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
+        this.durationOfMembership = durationOfMembership;
+        this.startOfMembership=startOfMembership;
+        this.currentNumTournaments=currentNumTournaments;
+        this.pastNumTournaments=pastNumTournaments;
+        this.futureNumTournaments = futureNumTournaments;
+        this.membershipType=membershipType;
+    }
 
     public MembershipType getMembershipType() {
         return membershipType;
@@ -84,34 +124,36 @@ public class Member {
         this.startOfMembership = startOfMembership;
     }
 
-    public int getCurrentNumTournaments() {
+    public CurrentTournaments getCurrentNumTournamentsList() {
         return currentNumTournaments;
     }
 
-    public void setCurrentNumTournaments(int currentNumTournaments) {
-        this.currentNumTournaments = currentNumTournaments;
+    public void setCurrentNumTournaments(CurrentTournaments currentNumTournamentsList) {
+        this.currentNumTournaments = currentNumTournamentsList;
     }
+
+    public PastTournaments getPastNumTournamentsList() {
+        return pastNumTournaments;
+    }
+
+    public void setPastNumTournamentsList(PastTournaments pastNumTournamentsList) {
+        this.pastNumTournaments = pastNumTournaments;
+    }
+
+    public FutureTournaments getFutureNumTournamentsList() {
+        return futureNumTournaments;
+    }
+
+    public void setFutureNumTournamentsList(FutureTournaments futureNumTournamentsList) {
+        this.futureNumTournaments = futureNumTournamentsList;
+    }
+
     public int getDurationOfMembership() {
         return durationOfMembership;
     }
 
     public void setDurationOfMembership(int durationOfMembership) {
         this.durationOfMembership = durationOfMembership;
-    }
-    public int getPastNumTournaments() {
-        return pastNumTournaments;
-    }
-
-    public void setPastNumTournaments(int pastNumTournaments) {
-        this.pastNumTournaments = pastNumTournaments;
-    }
-
-    public int getFutureNumTournaments() {
-        return futureNumTournaments;
-    }
-
-    public void setFutureNumTournaments(int futureNumTournaments) {
-        this.futureNumTournaments = futureNumTournaments;
     }
 
     public String getFirstName() {

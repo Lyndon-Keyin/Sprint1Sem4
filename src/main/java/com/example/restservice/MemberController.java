@@ -1,5 +1,7 @@
 package com.example.restservice;
 
+import com.example.Repositories.MemberRepository;
+import com.example.Repositories.MembershipTypeRepository;
 import com.example.accessingdatarest.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 @RestController
 public class MemberController {
@@ -89,40 +93,31 @@ public class MemberController {
         memberRepository.save(member);
         return "Saved Member";
     }
-    @PutMapping(value = "/memberDates")
-    public LocalDate updateMemberDates(@PathVariable long id, @RequestParam Member member){
-        Member updatedMember = memberRepository.findById(id).get();
-        updatedMember.setStartOfMembership(member.getStartOfMembership());
-        memberRepository.save(updatedMember);
-        return null;
-    }
-    @PutMapping(value = "/updateMember/{id}")
-    public String updateMember(@PathVariable long id, @RequestBody Member member){
-        Member updatedMember = memberRepository.findById(id).get();
 
+    @PutMapping(value = "/updateMember/{id}")
+    public ResponseEntity<Member>updateMember(@PathVariable long id, @RequestBody Member member){
+        Member updatedMember = memberRepository.findById(id).get();
         updatedMember.setLastName(member.getLastName());
         updatedMember.setFirstName(member.getFirstName());
         updatedMember.setPhone(member.getPhone());
         updatedMember.setAddress(member.getAddress());
         updatedMember.setEmail(member.getEmail());
         updatedMember.setDurationOfMembership(member.getDurationOfMembership());
-
-        updatedMember.setCurrentNumTournaments(member.getCurrentNumTournaments());
-        updatedMember.setPastNumTournaments(member.getPastNumTournaments());
-        updatedMember.setFutureNumTournaments(member.getFutureNumTournaments());
+        updatedMember.setCurrentNumTournaments(member.getCurrentNumTournamentsList());
+        updatedMember.setPastNumTournamentsList(member.getPastNumTournamentsList());
+        updatedMember.setFutureNumTournamentsList(member.getFutureNumTournamentsList());
         updatedMember.setStartOfMembership(member.getStartOfMembership());
-        memberRepository.save(updatedMember);
+        updatedMember.setMembershipType(member.getMembershipType());
 
-        return "updated member..";
+        return new ResponseEntity<>(memberRepository.save(updatedMember), HttpStatus.OK);
     }
 
-    @PutMapping(value = "/updateMembershipTypeId/{id}")
-    public String updateMembershipType(@PathVariable long id, @RequestBody MembershipType membershipType){
-        MembershipType updatedType = membershipTypeRepository.findById(id).get();
-        updatedType.setMembershipType(membershipType.getMembershipType());
-        membershipTypeRepository.save(updatedType);
-        return "yup";
+    @DeleteMapping(value="/deleteMember/{id}")
+    public String deleteTournament(@PathVariable long id){
+        Member deleteM = memberRepository.findById(id).get();
+        memberRepository.delete(deleteM);
+        return "Deleted user with the id: "+id;
     }
 
-//
+
 }

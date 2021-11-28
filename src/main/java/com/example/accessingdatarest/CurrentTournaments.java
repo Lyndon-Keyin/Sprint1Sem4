@@ -8,13 +8,14 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
-public class Tournaments {
+public class CurrentTournaments {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column
@@ -40,6 +41,28 @@ public class Tournaments {
     @Column
     private String finalStandings;
 
+    public CurrentTournaments(){
+
+    }
+
+    public CurrentTournaments(long id,
+                              LocalDate startDate,
+                              LocalDate endDate,
+                              String location,
+                              int entryFee,
+                              int cashPrize,
+                              String participatingMembers,
+                              String finalStandings)
+    {
+        this.id = id;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.location = location;
+        this.entryFee = entryFee;
+        this.cashPrize = cashPrize;
+        this.participatingMembers = participatingMembers;
+        this.finalStandings = finalStandings;
+    }
 
 
     public LocalDate getStartDate() {
