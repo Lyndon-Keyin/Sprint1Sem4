@@ -19,7 +19,7 @@ public class MemberController {
     @Autowired
     private MemberRepository memberRepository;
     @Autowired
-    private MembershipTypeRepository membershipTypeRepository;
+    private MembershipTypeRepository membership_typeRepository;
 
 
     @GetMapping("/welcome")
@@ -95,7 +95,7 @@ public class MemberController {
     }
 
     @PutMapping(value = "/updateMember/{id}")
-    public ResponseEntity<Member>updateMember(@PathVariable long id, @RequestBody Member member){
+    public ResponseEntity<Member>updateMember(@PathVariable long id,  @RequestBody Member member){
         Member updatedMember = memberRepository.findById(id).get();
         updatedMember.setLastName(member.getLastName());
         updatedMember.setFirstName(member.getFirstName());
@@ -103,11 +103,11 @@ public class MemberController {
         updatedMember.setAddress(member.getAddress());
         updatedMember.setEmail(member.getEmail());
         updatedMember.setDurationOfMembership(member.getDurationOfMembership());
-        updatedMember.setCurrentNumTournaments(member.getCurrentNumTournamentsList());
-        updatedMember.setPastNumTournamentsList(member.getPastNumTournamentsList());
-        updatedMember.setFutureNumTournamentsList(member.getFutureNumTournamentsList());
+        updatedMember.setCurrentNumTournaments(member.getCurrentNumTournaments());
+        updatedMember.setPastNumTournaments(member.getPastNumTournaments());
+        updatedMember.setFutureNumTournaments(member.getFutureNumTournaments());
         updatedMember.setStartOfMembership(member.getStartOfMembership());
-        updatedMember.setMembershipType(member.getMembershipType());
+        updatedMember.setMembership_type(member.getMembership_type());
 
         return new ResponseEntity<>(memberRepository.save(updatedMember), HttpStatus.OK);
     }

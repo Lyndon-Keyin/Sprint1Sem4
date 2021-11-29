@@ -15,10 +15,10 @@ public class FutureTournamentsController {
     @Autowired
     private FutureTournamentsRepository FutureTournamentsRepository;
 
-//    @GetMapping(value = "/allFutureTournaments")
-//    public Iterable<FutureTournaments> getMembers(){
-//        return FutureTournamentsRepository.findAll();
-//    }
+    @GetMapping(value = "/allFutureTournaments")
+    public Iterable<FutureTournaments> getMembers(){
+        return FutureTournamentsRepository.findAll();
+    }
 //    @GetMapping(value="/getFutureTour")
 //    public ResponseEntity<List<FutureTournaments>> findByParticipationMembers(@RequestParam String participatingMembers){
 //        try {

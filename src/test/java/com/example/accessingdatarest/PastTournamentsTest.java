@@ -29,18 +29,6 @@ class PastTournamentsTest {
         assertSame(ofEpochDayResult1, actualPastTournaments.getStartDate());
     }
 
-    @Test
-    void testConstructor2() {
-        PastTournaments actualPastTournaments = new PastTournaments(123L, LocalDate.ofEpochDay(1L),
-                LocalDate.ofEpochDay(1L), "Location", 1, 1, "Participating Members", "Final Standings");
 
-        assertEquals(1, actualPastTournaments.getCashPrize());
-        assertEquals("1970-01-02", actualPastTournaments.getStartDate().toString());
-        assertEquals("Participating Members", actualPastTournaments.getParticipatingMembers());
-        assertEquals("Location", actualPastTournaments.getLocation());
-        assertEquals("Final Standings", actualPastTournaments.getFinalStandings());
-        assertEquals(1, actualPastTournaments.getEntryFee());
-        assertEquals("1970-01-02", actualPastTournaments.getEndDate().toString());
-    }
 }
 

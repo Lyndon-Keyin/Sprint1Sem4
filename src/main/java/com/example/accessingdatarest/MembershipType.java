@@ -1,8 +1,16 @@
 package com.example.accessingdatarest;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
-
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class MembershipType {
 
@@ -10,23 +18,10 @@ public class MembershipType {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column
-    private String membershipType;
+    private String membership_type;
 
-    public  MembershipType(){
 
-    }
-    public MembershipType(long id, String membershipType){
-        this.id = id;
-        this.membershipType = membershipType;
-    }
 
-    public String getMembershipType() {
-        return membershipType;
-    }
-
-    public void setMembershipType(String membershipType) {
-        this.membershipType = membershipType;
-    }
 
 
 

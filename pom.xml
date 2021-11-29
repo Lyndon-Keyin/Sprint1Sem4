@@ -82,6 +82,12 @@
             <artifactId>joda-time</artifactId>
             <version>2.10.13</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+            <scope>provided</scope>
+        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>com.little-fluffy-clouds</groupId>-->
 <!--            <artifactId>testng-system-out-printer</artifactId>-->
