@@ -6,11 +6,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import java.util.List;
 
-@RepositoryRestResource(collectionResourceRel = "MembershipType", path="membershipType")
+@RepositoryRestResource(collectionResourceRel = "membership_type", path="membership_type")
 public interface MembershipTypeRepository extends PagingAndSortingRepository<MembershipType, Long> {
     List<MembershipType>findById(@Param("id") String id);
-    List<MembershipType>findByMembershipType(@Param("membershipType")String membershipType);
-    List<MembershipType>findMembershipTypeById(@Param("membershipTypeId")String membershipTypeId);
+   // List<MembershipType>findByMembershipType(@Param("membership_type")String membership_type);
+   // List<MembershipType>findMembershipTypeById(@Param("membership_type_id")String membership_type_id);
 
 //    List<MembershipType>findByNormal(@Param("normal") String normal);
 //    List<MembershipType>findBySpecialOffer(@Param("specialOffer")String specialOffer);

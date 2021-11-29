@@ -8,13 +8,10 @@ class MembershipTypeTest {
     @Test
     void testConstructor() {
         MembershipType actualMembershipType = new MembershipType();
-        actualMembershipType.setMembershipType("Membership Type");
-        assertEquals("Membership Type", actualMembershipType.getMembershipType());
+        actualMembershipType.setMembership_type("Membership Type");
+        assertEquals("Membership Type", actualMembershipType.getMembership_type());
     }
 
-    @Test
-    void testConstructor2() {
-        assertEquals("Membership Type", (new MembershipType(123L, "Membership Type")).getMembershipType());
-    }
+
 }
 

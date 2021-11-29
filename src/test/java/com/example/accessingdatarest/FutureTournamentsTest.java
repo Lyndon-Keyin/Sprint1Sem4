@@ -29,18 +29,6 @@ class FutureTournamentsTest {
         assertSame(ofEpochDayResult1, actualFutureTournaments.getStartDate());
     }
 
-    @Test
-    void testConstructor2() {
-        FutureTournaments actualFutureTournaments = new FutureTournaments(123L, LocalDate.ofEpochDay(1L),
-                LocalDate.ofEpochDay(1L), "Location", 1, 1, "Participating Members", "Final Standings");
 
-        assertEquals(1, actualFutureTournaments.getCashPrize());
-        assertEquals("1970-01-02", actualFutureTournaments.getStartDate().toString());
-        assertEquals("Participating Members", actualFutureTournaments.getParticipatingMembers());
-        assertEquals("Location", actualFutureTournaments.getLocation());
-        assertEquals("Final Standings", actualFutureTournaments.getFinalStandings());
-        assertEquals(1, actualFutureTournaments.getEntryFee());
-        assertEquals("1970-01-02", actualFutureTournaments.getEndDate().toString());
-    }
 }
 

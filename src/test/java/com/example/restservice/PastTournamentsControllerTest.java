@@ -55,6 +55,10 @@ class PastTournamentsControllerTest {
                 .andExpect(MockMvcResultMatchers.content().string("Deleted user with the id: 123"));
     }
 
+
+
+
+
     @Test
     void testSave() throws Exception {
         PastTournaments pastTournaments = new PastTournaments();
@@ -86,6 +90,8 @@ class PastTournamentsControllerTest {
                 .andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"))
                 .andExpect(MockMvcResultMatchers.content().string("Saved "));
     }
+
+
 
     @Test
     void testFindByParticipationMembers() throws Exception {
@@ -143,5 +149,7 @@ class PastTournamentsControllerTest {
                 .andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"))
                 .andExpect(MockMvcResultMatchers.content().string("updated..."));
     }
+
+
 }
 

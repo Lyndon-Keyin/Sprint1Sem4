@@ -34,7 +34,7 @@ class MembershipTypeControllerTest {
     @Test
     void testDeleteTournament() throws Exception {
         MembershipType membershipType = new MembershipType();
-        membershipType.setMembershipType("Membership Type");
+        membershipType.setMembership_type("Membership Type");
         Optional<MembershipType> ofResult = Optional.<MembershipType>of(membershipType);
         doNothing().when(this.membershipTypeRepository).delete((MembershipType) any());
         when(this.membershipTypeRepository.findById((Long) any())).thenReturn(ofResult);
@@ -50,11 +50,11 @@ class MembershipTypeControllerTest {
     @Test
     void testSaveMembershipType() throws Exception {
         MembershipType membershipType = new MembershipType();
-        membershipType.setMembershipType("Membership Type");
+        membershipType.setMembership_type("Membership Type");
         when(this.membershipTypeRepository.save((MembershipType) any())).thenReturn(membershipType);
 
         MembershipType membershipType1 = new MembershipType();
-        membershipType1.setMembershipType("Membership Type");
+        membershipType1.setMembership_type("Membership Type");
         String content = (new ObjectMapper()).writeValueAsString(membershipType1);
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post("/saveMembershipType")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -70,16 +70,16 @@ class MembershipTypeControllerTest {
     @Test
     void testUpdateMembershipType() throws Exception {
         MembershipType membershipType = new MembershipType();
-        membershipType.setMembershipType("Membership Type");
+        membershipType.setMembership_type("Membership Type");
         Optional<MembershipType> ofResult = Optional.<MembershipType>of(membershipType);
 
         MembershipType membershipType1 = new MembershipType();
-        membershipType1.setMembershipType("Membership Type");
+        membershipType1.setMembership_type("Membership Type");
         when(this.membershipTypeRepository.save((MembershipType) any())).thenReturn(membershipType1);
         when(this.membershipTypeRepository.findById((Long) any())).thenReturn(ofResult);
 
         MembershipType membershipType2 = new MembershipType();
-        membershipType2.setMembershipType("Membership Type");
+        membershipType2.setMembership_type("Membership Type");
         String content = (new ObjectMapper()).writeValueAsString(membershipType2);
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.put("/updateMembershipType/{id}", 123L)
                 .contentType(MediaType.APPLICATION_JSON)

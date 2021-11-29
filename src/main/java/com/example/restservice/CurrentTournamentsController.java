@@ -41,7 +41,7 @@ public class CurrentTournamentsController {
     }
 
     @PutMapping(value = "/updateCurrentTournaments/{id}")
-    public String updateTournament(@PathVariable long id, @RequestBody CurrentTournaments currentTournaments) throws Exception {
+    public String updateCurrentTournament(@PathVariable long id, @RequestBody CurrentTournaments currentTournaments) throws Exception {
         try {
             CurrentTournaments updatedCurrentTournaments = currentTournamentsRepository.findById(id).get();
             updatedCurrentTournaments.setCashPrize(currentTournaments.getCashPrize());
