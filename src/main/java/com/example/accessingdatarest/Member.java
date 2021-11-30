@@ -51,10 +51,10 @@ public class Member {
 
 
     @OneToOne
-    @JoinColumn(name = "membership")
+    @JoinColumn(name = "membership_type")
 //            (mappedBy = "member", cascade = CascadeType.ALL)
 //    @PrimaryKeyJoinColumn
-    private MembershipType membershipType;
+    private MembershipType membership_type;
 
 
 }

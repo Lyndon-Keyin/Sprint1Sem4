@@ -50,7 +50,7 @@ public class Tournaments {
     @Column
     private String tournamentName;
     @ManyToOne
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member")
     private Member member;
 
 
