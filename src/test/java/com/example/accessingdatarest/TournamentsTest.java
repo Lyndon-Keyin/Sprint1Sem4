@@ -21,7 +21,7 @@ class TournamentsTest {
         actualTournaments.setLocation("Location");
         MembershipType membershipType = new MembershipType();
         membershipType.setId(123L);
-        membershipType.setMember(new Member());
+      //  membershipType.setMember(new Member());
         membershipType.setMembership_type("Membership type");
         Member member = new Member();
         member.setLastName("Doe");
@@ -29,14 +29,14 @@ class TournamentsTest {
         member.setDurationOfMembership(1);
         member.setId(123L);
         member.setStartOfMembership(LocalDate.ofEpochDay(1L));
-        member.setMembershipTypeID(membershipType);
+       // member.setMembershipTypeID(membershipType);
         member.setTournaments(new HashSet<Tournaments>());
         member.setAddress("42 Main St");
         member.setFirstName("Jane");
         member.setPhone(1);
         MembershipType membershipType1 = new MembershipType();
         membershipType1.setId(123L);
-        membershipType1.setMember(member);
+      //  membershipType1.setMember(member);
         membershipType1.setMembership_type("Membership type");
         Member member1 = new Member();
         member1.setLastName("Doe");
@@ -44,7 +44,7 @@ class TournamentsTest {
         member1.setDurationOfMembership(1);
         member1.setId(123L);
         member1.setStartOfMembership(LocalDate.ofEpochDay(1L));
-        member1.setMembershipTypeID(membershipType1);
+      //  member1.setMembershipTypeID(membershipType1);
         member1.setTournaments(new HashSet<Tournaments>());
         member1.setAddress("42 Main St");
         member1.setFirstName("Jane");

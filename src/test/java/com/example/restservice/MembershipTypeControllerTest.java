@@ -43,7 +43,7 @@ class MembershipTypeControllerTest {
         member.setDurationOfMembership(1);
         member.setId(123L);
         member.setStartOfMembership(LocalDate.ofEpochDay(1L));
-        member.setMembershipTypeID(new MembershipType());
+      //  member.setMembershipTypeID(new MembershipType());
         member.setTournaments(new HashSet<Tournaments>());
         member.setAddress("42 Main St");
         member.setFirstName("Jane");
@@ -51,7 +51,7 @@ class MembershipTypeControllerTest {
 
         MembershipType membershipType = new MembershipType();
         membershipType.setId(123L);
-        membershipType.setMember(member);
+      //  membershipType.setMember(member);
         membershipType.setMembership_type("Membership type");
 
         Member member1 = new Member();
@@ -60,7 +60,7 @@ class MembershipTypeControllerTest {
         member1.setDurationOfMembership(1);
         member1.setId(123L);
         member1.setStartOfMembership(LocalDate.ofEpochDay(1L));
-        member1.setMembershipTypeID(membershipType);
+       // member1.setMembershipTypeID(membershipType);
         member1.setTournaments(new HashSet<Tournaments>());
         member1.setAddress("42 Main St");
         member1.setFirstName("Jane");
@@ -68,7 +68,7 @@ class MembershipTypeControllerTest {
 
         MembershipType membershipType1 = new MembershipType();
         membershipType1.setId(123L);
-        membershipType1.setMember(member1);
+      //  membershipType1.setMember(member1);
         membershipType1.setMembership_type("Membership type");
         Optional<MembershipType> ofResult = Optional.<MembershipType>of(membershipType1);
         doNothing().when(this.membershipTypeRepository).delete((MembershipType) any());
@@ -86,7 +86,7 @@ class MembershipTypeControllerTest {
     void testSaveMembershipType() throws Exception {
         MembershipType membershipType = new MembershipType();
         membershipType.setId(123L);
-        membershipType.setMember(new Member());
+      //  membershipType.setMember(new Member());
         membershipType.setMembership_type("Membership type");
 
         Member member = new Member();
@@ -95,7 +95,7 @@ class MembershipTypeControllerTest {
         member.setDurationOfMembership(1);
         member.setId(123L);
         member.setStartOfMembership(LocalDate.ofEpochDay(1L));
-        member.setMembershipTypeID(membershipType);
+      //  member.setMembershipTypeID(membershipType);
         member.setTournaments(new HashSet<Tournaments>());
         member.setAddress("42 Main St");
         member.setFirstName("Jane");
@@ -103,7 +103,7 @@ class MembershipTypeControllerTest {
 
         MembershipType membershipType1 = new MembershipType();
         membershipType1.setId(123L);
-        membershipType1.setMember(member);
+      //  membershipType1.setMember(member);
         membershipType1.setMembership_type("Membership type");
 
         Member member1 = new Member();
@@ -112,7 +112,7 @@ class MembershipTypeControllerTest {
         member1.setDurationOfMembership(1);
         member1.setId(123L);
         member1.setStartOfMembership(LocalDate.ofEpochDay(1L));
-        member1.setMembershipTypeID(membershipType1);
+      //  member1.setMembershipTypeID(membershipType1);
         member1.setTournaments(new HashSet<Tournaments>());
         member1.setAddress("42 Main St");
         member1.setFirstName("Jane");
@@ -120,13 +120,13 @@ class MembershipTypeControllerTest {
 
         MembershipType membershipType2 = new MembershipType();
         membershipType2.setId(123L);
-        membershipType2.setMember(member1);
+     //   membershipType2.setMember(member1);
         membershipType2.setMembership_type("Membership type");
         when(this.membershipTypeRepository.save((MembershipType) any())).thenReturn(membershipType2);
 
         MembershipType membershipType3 = new MembershipType();
         membershipType3.setId(123L);
-        membershipType3.setMember(new Member());
+      //  membershipType3.setMember(new Member());
         membershipType3.setMembership_type("Membership type");
 
         Member member2 = new Member();
@@ -135,7 +135,7 @@ class MembershipTypeControllerTest {
         member2.setDurationOfMembership(1);
         member2.setId(123L);
         member2.setStartOfMembership(LocalDate.ofEpochDay(1L));
-        member2.setMembershipTypeID(membershipType3);
+       // member2.setMembershipTypeID(membershipType3);
         member2.setTournaments(new HashSet<Tournaments>());
         member2.setAddress("42 Main St");
         member2.setFirstName("Jane");
@@ -143,7 +143,7 @@ class MembershipTypeControllerTest {
 
         MembershipType membershipType4 = new MembershipType();
         membershipType4.setId(123L);
-        membershipType4.setMember(member2);
+      //  membershipType4.setMember(member2);
         membershipType4.setMembership_type("Membership type");
 
         Member member3 = new Member();
@@ -152,15 +152,14 @@ class MembershipTypeControllerTest {
         member3.setDurationOfMembership(1);
         member3.setId(123L);
         member3.setStartOfMembership(LocalDate.ofEpochDay(1L));
-        member3.setMembershipTypeID(membershipType4);
-        member3.setTournaments(new HashSet<Tournaments>());
+//        member3.setTournaments(new HashSet<Tournaments>());
         member3.setAddress("42 Main St");
         member3.setFirstName("Jane");
         member3.setPhone(1);
 
         MembershipType membershipType5 = new MembershipType();
         membershipType5.setId(123L);
-        membershipType5.setMember(member3);
+       // membershipType5.setMember(member3);
         membershipType5.setMembership_type("Membership type");
         String content = (new ObjectMapper()).writeValueAsString(membershipType5);
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post("/saveMembershipType")
@@ -182,7 +181,7 @@ class MembershipTypeControllerTest {
         member.setDurationOfMembership(1);
         member.setId(123L);
         member.setStartOfMembership(LocalDate.ofEpochDay(1L));
-        member.setMembershipTypeID(new MembershipType());
+     //   member.setMembershipTypeID(new MembershipType());
         member.setTournaments(new HashSet<Tournaments>());
         member.setAddress("42 Main St");
         member.setFirstName("Jane");
@@ -190,7 +189,7 @@ class MembershipTypeControllerTest {
 
         MembershipType membershipType = new MembershipType();
         membershipType.setId(123L);
-        membershipType.setMember(member);
+      //  membershipType.setMember(member);
         membershipType.setMembership_type("Membership type");
 
         Member member1 = new Member();
@@ -199,7 +198,7 @@ class MembershipTypeControllerTest {
         member1.setDurationOfMembership(1);
         member1.setId(123L);
         member1.setStartOfMembership(LocalDate.ofEpochDay(1L));
-        member1.setMembershipTypeID(membershipType);
+       // member1.setMembershipTypeID(membershipType);
         member1.setTournaments(new HashSet<Tournaments>());
         member1.setAddress("42 Main St");
         member1.setFirstName("Jane");
@@ -207,13 +206,13 @@ class MembershipTypeControllerTest {
 
         MembershipType membershipType1 = new MembershipType();
         membershipType1.setId(123L);
-        membershipType1.setMember(member1);
+      //  membershipType1.setMember(member1);
         membershipType1.setMembership_type("Membership type");
         Optional<MembershipType> ofResult = Optional.<MembershipType>of(membershipType1);
 
         MembershipType membershipType2 = new MembershipType();
         membershipType2.setId(123L);
-        membershipType2.setMember(new Member());
+      //  membershipType2.setMember(new Member());
         membershipType2.setMembership_type("Membership type");
 
         Member member2 = new Member();
@@ -222,7 +221,7 @@ class MembershipTypeControllerTest {
         member2.setDurationOfMembership(1);
         member2.setId(123L);
         member2.setStartOfMembership(LocalDate.ofEpochDay(1L));
-        member2.setMembershipTypeID(membershipType2);
+       // member2.setMembershipTypeID(membershipType2);
         member2.setTournaments(new HashSet<Tournaments>());
         member2.setAddress("42 Main St");
         member2.setFirstName("Jane");
@@ -230,7 +229,7 @@ class MembershipTypeControllerTest {
 
         MembershipType membershipType3 = new MembershipType();
         membershipType3.setId(123L);
-        membershipType3.setMember(member2);
+     //   membershipType3.setMember(member2);
         membershipType3.setMembership_type("Membership type");
 
         Member member3 = new Member();
@@ -239,7 +238,7 @@ class MembershipTypeControllerTest {
         member3.setDurationOfMembership(1);
         member3.setId(123L);
         member3.setStartOfMembership(LocalDate.ofEpochDay(1L));
-        member3.setMembershipTypeID(membershipType3);
+      //  member3.setMembershipTypeID(membershipType3);
         member3.setTournaments(new HashSet<Tournaments>());
         member3.setAddress("42 Main St");
         member3.setFirstName("Jane");
@@ -247,14 +246,14 @@ class MembershipTypeControllerTest {
 
         MembershipType membershipType4 = new MembershipType();
         membershipType4.setId(123L);
-        membershipType4.setMember(member3);
+      //  membershipType4.setMember(member3);
         membershipType4.setMembership_type("Membership type");
         when(this.membershipTypeRepository.save((MembershipType) any())).thenReturn(membershipType4);
         when(this.membershipTypeRepository.findById((Long) any())).thenReturn(ofResult);
 
         MembershipType membershipType5 = new MembershipType();
         membershipType5.setId(123L);
-        membershipType5.setMember(new Member());
+     //  membershipType5.setMember(new Member());
         membershipType5.setMembership_type("Membership type");
 
         Member member4 = new Member();
@@ -263,7 +262,7 @@ class MembershipTypeControllerTest {
         member4.setDurationOfMembership(1);
         member4.setId(123L);
         member4.setStartOfMembership(LocalDate.ofEpochDay(1L));
-        member4.setMembershipTypeID(membershipType5);
+       // member4.setMembershipTypeID(membershipType5);
         member4.setTournaments(new HashSet<Tournaments>());
         member4.setAddress("42 Main St");
         member4.setFirstName("Jane");
@@ -271,7 +270,7 @@ class MembershipTypeControllerTest {
 
         MembershipType membershipType6 = new MembershipType();
         membershipType6.setId(123L);
-        membershipType6.setMember(member4);
+     //   membershipType6.setMember(member4);
         membershipType6.setMembership_type("Membership type");
 
         Member member5 = new Member();
@@ -280,7 +279,7 @@ class MembershipTypeControllerTest {
         member5.setDurationOfMembership(1);
         member5.setId(123L);
         member5.setStartOfMembership(LocalDate.ofEpochDay(1L));
-        member5.setMembershipTypeID(membershipType6);
+      //  member5.setMembershipTypeID(membershipType6);
         member5.setTournaments(new HashSet<Tournaments>());
         member5.setAddress("42 Main St");
         member5.setFirstName("Jane");
@@ -288,7 +287,7 @@ class MembershipTypeControllerTest {
 
         MembershipType membershipType7 = new MembershipType();
         membershipType7.setId(123L);
-        membershipType7.setMember(member5);
+      //  membershipType7.setMember(member5);
         membershipType7.setMembership_type("Membership type");
         String content = (new ObjectMapper()).writeValueAsString(membershipType7);
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.put("/updateMembershipType/{id}", 123L)

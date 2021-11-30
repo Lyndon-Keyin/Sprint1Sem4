@@ -74,7 +74,7 @@ public class MemberController {
         updatedMember.setTournaments(member.getTournaments());
 
         updatedMember.setStartOfMembership(member.getStartOfMembership());
-        updatedMember.setMembershipTypeID(member.getMembershipTypeID());
+    //   updatedMember.setMembershipTypeID(member.getMembershipTypeID());
 
         return new ResponseEntity<>(memberRepository.save(updatedMember), HttpStatus.OK);
     }

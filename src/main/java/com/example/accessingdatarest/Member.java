@@ -50,10 +50,11 @@ public class Member {
     private Set<Tournaments> Tournaments;
 
 
-    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-//    @JoinColumn(name = "membershipType_id", referencedColumnName = "id")
-    private MembershipType membershipTypeID;
+    @OneToOne
+    @JoinColumn(name = "membership")
+//            (mappedBy = "member", cascade = CascadeType.ALL)
+//    @PrimaryKeyJoinColumn
+    private MembershipType membershipType;
 
 
 }
