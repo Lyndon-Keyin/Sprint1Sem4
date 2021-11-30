@@ -14,6 +14,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
+
 @Setter
 @Getter
 @AllArgsConstructor
@@ -43,23 +45,15 @@ public class Member {
     @Column
     private int durationOfMembership;
 
-
-    @ManyToOne
-    @JoinColumn(name = "current_tournament")
-    private CurrentTournaments currentNumTournaments;
-
-    @ManyToOne
-    @JoinColumn(name = "past_tournament")
-    private PastTournaments pastNumTournaments;
-
-    @ManyToOne
-    @JoinColumn(name = "future_tournament")
-    private FutureTournaments futureNumTournaments;
+    @OneToMany
+    @JoinColumn(name="tournaments")
+    private Set<Tournaments> Tournaments;
 
 
-    @OneToOne
-    @JoinColumn(name = "membership_type")
-    private MembershipType membership_type;
+    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+//    @JoinColumn(name = "membershipType_id", referencedColumnName = "id")
+    private MembershipType membershipTypeID;
 
 
 }

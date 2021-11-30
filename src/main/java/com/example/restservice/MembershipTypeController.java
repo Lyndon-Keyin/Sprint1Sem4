@@ -1,9 +1,7 @@
 package com.example.restservice;
 
-import com.example.accessingdatarest.Member;
 import com.example.accessingdatarest.MembershipType;
 import com.example.Repositories.MembershipTypeRepository;
-import com.example.accessingdatarest.PastTournaments;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

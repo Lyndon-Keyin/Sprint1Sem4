@@ -15,10 +15,15 @@ import java.util.List;
 public class MembershipType {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column
     private String membership_type;
+    @OneToOne
+    @MapsId
+//    @JoinColumn(name="member_id")
+    private Member member;
+
 
 
 

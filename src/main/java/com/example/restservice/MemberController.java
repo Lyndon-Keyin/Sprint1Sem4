@@ -53,41 +53,9 @@ public class MemberController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @GetMapping(value = "/current")
-    public ResponseEntity<List<Member>> findByCurrentNumTournaments(@RequestParam int currentNumTournaments){
-        try {
-            List<Member> member = new ArrayList<Member>();
-            memberRepository.findByCurrentNumTournaments(currentNumTournaments).forEach(member::add);
-            return new ResponseEntity<>(member, HttpStatus.OK);
-        }
-        catch(Exception exception){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 
-    @GetMapping(value = "/past")
-    public ResponseEntity<List<Member>> findByPastNumTournaments(@RequestParam int pastNumTournaments){
-        try {
-            List<Member> member = new ArrayList<Member>();
-            memberRepository.findByPastNumTournaments(pastNumTournaments).forEach(member::add);
-            return new ResponseEntity<>(member, HttpStatus.OK);
-        }
-        catch(Exception exception){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 
-    @GetMapping(value = "/future")
-    public ResponseEntity<List<Member>> findByFutureNumTournaments(@RequestParam int futureNumTournaments){
-        try {
-            List<Member> member = new ArrayList<Member>();
-            memberRepository.findByFutureNumTournaments(futureNumTournaments).forEach(member::add);
-            return new ResponseEntity<>(member, HttpStatus.OK);
-        }
-        catch(Exception exception){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+
     @PostMapping(value = "/saveMember")
     public String saveMember (@RequestBody Member member){
         memberRepository.save(member);
@@ -103,11 +71,10 @@ public class MemberController {
         updatedMember.setAddress(member.getAddress());
         updatedMember.setEmail(member.getEmail());
         updatedMember.setDurationOfMembership(member.getDurationOfMembership());
-        updatedMember.setCurrentNumTournaments(member.getCurrentNumTournaments());
-        updatedMember.setPastNumTournaments(member.getPastNumTournaments());
-        updatedMember.setFutureNumTournaments(member.getFutureNumTournaments());
+        updatedMember.setTournaments(member.getTournaments());
+
         updatedMember.setStartOfMembership(member.getStartOfMembership());
-        updatedMember.setMembership_type(member.getMembership_type());
+        updatedMember.setMembershipTypeID(member.getMembershipTypeID());
 
         return new ResponseEntity<>(memberRepository.save(updatedMember), HttpStatus.OK);
     }

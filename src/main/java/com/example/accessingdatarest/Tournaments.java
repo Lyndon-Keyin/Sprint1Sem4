@@ -19,7 +19,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class CurrentTournaments {
+@Table(name="Tournaments")
+public class Tournaments {
 
     @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,10 +44,14 @@ public class CurrentTournaments {
     private int entryFee;
     @Column
     private int cashPrize;
-    @Column
-    private String participatingMembers;
+
     @Column
     private String finalStandings;
+    @Column
+    private String tournamentName;
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 
 
 
